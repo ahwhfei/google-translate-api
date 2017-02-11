@@ -52,6 +52,7 @@ function translate(text, opts) {
         return got(url).then(function (res) {
             var result = {
                 text: '',
+                origin: '',
                 from: {
                     language: {
                         didYouMean: false,
@@ -74,6 +75,10 @@ function translate(text, opts) {
             body[0].forEach(function (obj) {
                 if (obj[0] !== undefined) {
                     result.text += obj[0];
+                }
+
+                if (obj[1] !== undefined) {
+                    result.origin += obj[1];
                 }
             });
 
